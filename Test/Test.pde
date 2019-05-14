@@ -9,7 +9,6 @@ float y = 300;
 float v = 0;
 boolean left;
 boolean right;
-boolean jump;
 void draw() {
   background(255);
   rect(x, y, 20, 20);
@@ -25,14 +24,11 @@ void draw() {
   if (right) {
     x += 5;
   }
-  if (jump) {
-    v = -10;
-  }
 }
 
 void keyPressed() {
   if (keyCode == UP && y == height - 20) {
-    jump = true;
+    v = -10;
   }
   if (keyCode == LEFT) {
     left = true;
@@ -43,9 +39,6 @@ void keyPressed() {
 }
 
 void keyReleased() {
-  if (keyCode == UP) {
-    jump = false;
-  }
   if (keyCode == LEFT) {
     left = false;
   }
