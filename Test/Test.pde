@@ -1,7 +1,7 @@
 void setup() {
   size(1500, 800);
   background(255);
-  frameRate(60);
+  frameRate(20);
 }
 
 int x = 300;
@@ -15,8 +15,9 @@ void draw() {
   background(-1);
   fill(-1);
   rect(x, y, 20, 20);
-  fill(0);
+  fill(0, 125, 255);
   rect(499, 700, 100, 20);
+  rect(699, 701, 100, 20);
   text(get(x, y + 21), 40, 40);
   text(v, 50, 50);
   text(" " + fall, 60, 60);
@@ -29,13 +30,14 @@ void draw() {
         }
         v = 0;
       }
-      if (get(x - 1 - xv, y + i) < -100000) {
+      if (left && get(x - 1 - xv, y + i) < -100000) {
         xv = 0;
         while (get(x - 1, y + i) > -100000) {
           x--;
         }
       }
-      if (get(x + 21 + xv, y + i) < -100000) {
+      if (right && get(x + 21 + xv, y + i) < -100000) {
+        v = 0;
         xv = 0;
         while (get(x + 21, y + i) > -100000) {
           x++;
