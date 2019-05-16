@@ -53,7 +53,7 @@ void draw() {
     }
     if (fall == true) {
       y = int(y + v);
-      v += 0.25;
+      v += 0.50;
     }
   } else {
     y = height - 21;
