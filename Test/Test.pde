@@ -1,12 +1,12 @@
 void setup() {
   size(1500, 800);
   background(255);
-  frameRate(20);
+  frameRate(60);
 }
 
 int x = 300;
 int y = 300;
-int xv = 5;
+int xv = 0;
 float v = 0;
 boolean left;
 boolean right;
@@ -24,6 +24,15 @@ void draw() {
   if (y < height - 21) {
     fall = true;
     for (int i = 0; i < 21; i++) {
+      //corners
+      if (i < xv && get(x + i + xv, y + 19) < -100000) {
+        text(y + 19, 500, 20);
+        stroke( color(255, 0, 0));
+        fill( color(255, 0, 0));
+        rect(x + i - 5, y + 14, 5, 5);
+        x = 20;
+      }
+      //edges
       if (v < 0 && get(x + i, (int)(y - 1 + v)) < -100000) {
         while (get(x + i, y - 1) > -100000) {
           y--;
@@ -69,6 +78,7 @@ void draw() {
     x += xv;
     xv = 5;
   }
+  text(y, 520, 20);
 }
 
 void keyPressed() {
