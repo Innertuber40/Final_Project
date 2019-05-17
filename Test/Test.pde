@@ -37,7 +37,6 @@ void draw() {
         }
       }
       if (right && get(x + 21 + xv, y + i) < -100000) {
-        v = 0;
         xv = 0;
         while (get(x + 21, y + i) > -100000) {
           x++;
