@@ -1,14 +1,11 @@
 abstract class Thing{
-  int xcor;
-  int ycor;
-  String[] design;
-  boolean exists;
+  private int x;
+  private int y;
+  private String[] design;
+  private boolean exists;
   
   abstract void display();
-  boolean scroll(String) {
-    //do something here
-    return false;
-  }
+  //abstract boolean scroll(String);
   abstract void move(int, int);
-  
+  abstract void die();
 }
