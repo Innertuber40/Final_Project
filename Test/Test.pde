@@ -40,6 +40,8 @@ void draw() {
         rect(x + i - 5, y + 14, 5, 5);
         x = 20;
       }*/
+        y -= 5;
+      }
       //edges
       if (v < 0 && get(x + i, (int)(y - 1 + v)) < -100000) {
         while (get(x + i, y - 1) > -100000) {
