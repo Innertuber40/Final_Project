@@ -1,7 +1,7 @@
 void setup() {
   size(1500, 800);
   background(255);
-  frameRate(60);
+  frameRate(20);
 }
 
 int x = 300;
@@ -11,6 +11,7 @@ float v = 0;
 boolean left;
 boolean right;
 boolean fall = true;
+boolean onSlope = true;
 void draw() {
   background(-1);
   fill(-1);
@@ -18,6 +19,8 @@ void draw() {
   fill(0, 125, 255);
   rect(499, 700, 100, 20);
   rect(699, 701, 100, 20);
+  triangle(250, 800, 350, 800, 350, 750);
+  rect(0, 775, 1500, 25);
   text(get(x, y + 21), 40, 40);
   text(v, 50, 50);
   text(" " + fall, 60, 60);
@@ -25,13 +28,13 @@ void draw() {
     fall = true;
     for (int i = 0; i < 21; i++) {
       //corners
-      if (i < xv && get(x + i + xv, y + 19) < -100000) {
+      /*if (i < xv && get(x + i + xv, y + 19) < -100000) {
         text(y + 19, 500, 20);
         stroke( color(255, 0, 0));
         fill( color(255, 0, 0));
         rect(x + i - 5, y + 14, 5, 5);
         x = 20;
-      }
+      }*/
       //edges
       if (v < 0 && get(x + i, (int)(y - 1 + v)) < -100000) {
         while (get(x + i, y - 1) > -100000) {
@@ -60,6 +63,8 @@ void draw() {
         fall = false;
         i = 21;
       }
+      //slopes
+      
     }
     if (fall == true) {
       y = int(y + v);
@@ -71,12 +76,22 @@ void draw() {
     fall = false;
   }
   if (left) {
-    x -= xv;
-    xv = 5;
+    if (onSlope) {
+      x -= 5;
+      y -= 2.5;
+    } else {
+      x -= xv;
+      xv = 5;
+    }
   }
   if (right) {
-    x += xv;
-    xv = 5;
+    if (onSlope) {
+      x += 5;
+      y -= 2.5;
+    } else {
+      x += xv;
+      xv = 5;
+    }
   }
   text(y, 520, 20);
 }
