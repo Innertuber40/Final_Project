@@ -11,7 +11,7 @@ float v = 0;
 boolean left;
 boolean right;
 boolean fall = true;
-boolean onSlope = true;
+boolean onSlope = false;
 void draw() {
   background(-1);
   fill(-1);
@@ -26,6 +26,11 @@ void draw() {
   text(" " + fall, 60, 60);
   if (y < height - 21) {
     fall = true;
+    if (get(x + 21, y + 21) > -100000) {
+      onSlope = true;
+    } else {
+      onSlope = false;
+    }
     for (int i = 0; i < 21; i++) {
       //corners
       /*if (i < xv && get(x + i + xv, y + 19) < -100000) {
