@@ -6,6 +6,6 @@ abstract class Thing{
   
   abstract void display();
   //abstract boolean scroll(String);
-  abstract void move(int, int);
+  abstract void move(int x, int y);
   abstract void die();
 }

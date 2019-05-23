@@ -7,9 +7,12 @@ class Player extends Thing{
   Player(){
     x = width/2;
     y = height+25;
+    health = 100;
   }
   
   void display(){
+    PImage img = loadImage("char_sprite.png");
+    image(img, x, y, 20, 20);
   }
   void move(int x, int y){
   }
@@ -27,7 +30,7 @@ class Player extends Thing{
   boolean[] weapons(){
     return weapons;
   }
-  boolean scroll(String){
+  boolean scroll(String s){
     //do something here
     return false;
   }
