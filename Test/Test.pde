@@ -19,18 +19,15 @@ void draw() {
   fill(0, 125, 255);
   rect(499, 700, 100, 20);
   rect(699, 701, 100, 20);
+  stroke(1);
   triangle(250, 800, 350, 800, 350, 750);
+  stroke(0);
   rect(0, 775, 1500, 25);
   text(get(x, y + 21), 40, 40);
   text(v, 50, 50);
   text(" " + fall, 60, 60);
   if (y < height - 21) {
     fall = true;
-    if (get(x + 21, y + 21) > -100000) {
-      onSlope = true;
-    } else {
-      onSlope = false;
-    }
     for (int i = 0; i < 21; i++) {
       //corners
       /*if (i < xv && get(x + i + xv, y + 19) < -100000) {
@@ -40,8 +37,6 @@ void draw() {
         rect(x + i - 5, y + 14, 5, 5);
         x = 20;
       }*/
-        y -= 5;
-      }
       //edges
       if (v < 0 && get(x + i, (int)(y - 1 + v)) < -100000) {
         while (get(x + i, y - 1) > -100000) {
@@ -71,7 +66,6 @@ void draw() {
         i = 21;
       }
       //slopes
-      
     }
     if (fall == true) {
       y = int(y + v);
