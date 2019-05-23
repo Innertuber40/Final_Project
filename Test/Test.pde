@@ -1,21 +1,20 @@
 void setup() {
   size(1500, 800);
   background(255);
-  frameRate(20);
+  frameRate(60);
 }
 
 int x = 300;
 int y = 300;
 int xv = 0;
-float v = 0;
+int v = 0;
 boolean left;
 boolean right;
 boolean fall = true;
 boolean onSlope = false;
+color black = color(0);
 void draw() {
   background(-1);
-  fill(-1);
-  rect(x, y, 20, 20);
   fill(0, 125, 255);
   rect(499, 700, 100, 20);
   rect(699, 701, 100, 20);
@@ -23,12 +22,13 @@ void draw() {
   triangle(250, 800, 350, 800, 350, 750);
   stroke(0);
   rect(0, 775, 1500, 25);
-  text(get(x, y + 21), 40, 40);
+  text((get(x, y + 21) == black) + " ", 40, 40);
   text(v, 50, 50);
   text(" " + fall, 60, 60);
   if (y < height - 21) {
     fall = true;
     for (int i = 0; i < 21; i++) {
+      for (int j = 1; j < Math.abs(v); j++) {
       //corners
       /*if (i < xv && get(x + i + xv, y + 19) < -100000) {
         text(y + 19, 500, 20);
@@ -38,38 +38,46 @@ void draw() {
         x = 20;
       }*/
       //edges
-      if (v < 0 && get(x + i, (int)(y - 1 + v)) < -100000) {
-        while (get(x + i, y - 1) > -100000) {
+      if (v < 0 && get(x + i, y - j) == black) {
+        while (get(x + i, y - 1) != black) {
           y--;
         }
         v = 0;
+        i = 21;
+        j = Math.abs(v) + 1;
       }
-      if (left && get(x - 1 - xv, y + i) < -100000) {
+      else if (left && get(x - 1 - xv, y + i) == black) {
         xv = 0;
-        while (get(x - 1, y + i) > -100000) {
+        while (get(x - 1, y + i) != black) {
           x--;
         }
+        i = 21;
       }
-      if (right && get(x + 21 + xv, y + i) < -100000) {
+      else if (right && get(x + 21 + xv, y + i) == black) {
         xv = 0;
-        while (get(x + 21, y + i) > -100000) {
+        while (get(x + 21, y + i) != black) {
           x++;
         }
+        i = 21;
       }
-      if (v >= 0 && get(x + i, (int)(y + 21 + v)) < -100000) {
-        while (get(x + i, y + 21) > -100000) {
+      else if (v >= 0 && get(x + i, y + 20 + j) == black) {
+        while (get(x + i, y + 21) != black) {
           y++;
         }
         text(i, 300, 300);
         v = 0;
         fall = false;
         i = 21;
+        j = Math.abs(v) + 1;
       }
       //slopes
     }
     if (fall == true) {
-      y = int(y + v);
-      v += 0.50;
+      y = y + v;
+      if (frameCount % 2 == 0) {
+        v++;
+      }
+    }
     }
   } else {
     y = height - 21;
@@ -95,6 +103,8 @@ void draw() {
     }
   }
   text(y, 520, 20);
+  fill(-1);
+  rect(x, y, 20, 20);
 }
 
 void keyPressed() {
