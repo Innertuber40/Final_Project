@@ -8,16 +8,17 @@ class Player extends Thing{
   private boolean right;
   private float v;
   private float xv;
+  private PImage img;
   
-  Player(){
+  Player(PImage i){
     x = width/2;
     y = height+25;
     health = 100;
     fall = false;
+    img = i;
   }
   
   void display(){
-    PImage img = loadImage("char_sprite.png");
     image(img, x, y, 20, 20);
   }
   void move(int x, int y){
