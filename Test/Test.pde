@@ -17,7 +17,8 @@ void draw() {
   background(-1);
   fill(0, 125, 255);
   rect(499, 700, 100, 20);
-  rect(699, 701, 100, 20);
+  rect(699, 730, 100, 20);
+  line(0, 750, 20, 750);
   stroke(1);
   triangle(250, 800, 350, 800, 350, 750);
   stroke(0);
@@ -51,16 +52,12 @@ void draw() {
           while (get(x - 1, y + i) != black) {
             x--;
           }
-          i = 21;
-          j = Math.abs(v) + 1;
         }
         else if (right && get(x + 21 + xv, y + i) == black) {
           xv = 0;
           while (get(x + 21, y + i) != black) {
             x++;
           }
-          i = 21;
-          j = Math.abs(v) + 1;
         }
         else if (v > 0 && get(x + i, y + 20 + j) == black) {
           while (get(x + i, y + 21) != black) {
