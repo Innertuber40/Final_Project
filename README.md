@@ -2,7 +2,7 @@
 Processing Awesomeness
 
 Developmental Log:
-May 13-14th 
+May 13-14th: 
   -started working on proof of concept
   -jumping mechanism complete
   -landing on platforms complete
