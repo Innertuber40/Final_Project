@@ -10,6 +10,8 @@ class Platform{
   }
   
   void display(){
+    fill(0, 125, 255);
+    rect(x, y, 100, 20);
   }
   boolean scroll(String s){
     //do something here
