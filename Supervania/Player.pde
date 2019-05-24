@@ -19,7 +19,7 @@ class Player extends Thing{
   }
   
   void display(){
-    image(img, x, y, 20, 20);
+    image(img, 50, 50, 20, 20);
   }
   void move(int x, int y){
     
