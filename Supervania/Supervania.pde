@@ -12,6 +12,7 @@ void setup(){
   pl[1] = new Platform(500, 600);
 }
 void draw(){
+  background(255);
   pl[0].display();
   pl[1].display();
   p.display();

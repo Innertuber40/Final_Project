@@ -6,7 +6,7 @@ class Player extends Thing{
   private boolean fall;
   private boolean left;
   private boolean right;
-  private int v;
+  private float v;
   private int xv;
   private PImage img;
   
@@ -19,9 +19,7 @@ class Player extends Thing{
   }
   
   void display(){
-    //image(img, x, y, 20, 20);
-    fill(255);
-    rect(x, y, 20, 20);
+    image(img, x, y, 20, 20);
   }
   void move(){
     if (y < height - 21) {
