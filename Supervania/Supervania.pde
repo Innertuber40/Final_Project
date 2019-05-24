@@ -1,3 +1,4 @@
+//hi`
 Player p;
 //this is a player
 Platform[] pl;
