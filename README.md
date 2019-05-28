@@ -13,4 +13,7 @@ May 23rd
   -started working on slopes; partially working
   -image display working
   -started to implement movement from the experimental directory to the project directory
-  
+
+May 24th
+  -moved the movement code from Test to Player
+  -started working on other classes.
