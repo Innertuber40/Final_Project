@@ -1,10 +1,10 @@
 void setup() {
   size(1500, 800);
   background(255);
-  frameRate(10);
+  frameRate(60);
 }
 
-int x = 300;
+int x = 801;
 int y = 300;
 int xv = 0;
 int v = 0;
@@ -37,7 +37,7 @@ void draw() {
       }
       for (int j = 0; j < Math.abs(v) + 1; j++) {
         int vx = xv;
-        for (int k = 1; k <= vx; k++) {
+        for (int k = 0; k <= vx; k++) {
         //corners
         /*if (i < xv && get(x + i + xv, y + 19) < -100000) {
           text(y + 19, 500, 20);
@@ -47,8 +47,7 @@ void draw() {
           x = 20;
         }*/
         //edges
-        
-            text(y + 21 + j + "", 678 + j*50, 80);
+          text(j + "", 678 + j*50, 80);
           if (v >= 0 && get(x + i, y + 21 + j) == black) {
             while (get(x + i, y + 21) != black) {
               y++;
@@ -57,7 +56,7 @@ void draw() {
             fall = false;
             j = Math.abs(v) + 1;
           }
-          if (left && get(x - k, y + i) == black) {
+          if (left && get(x - 1 - k, y + i) == black) {
             while (get(x - 1, y + i) != black) {
               x--;
             }
@@ -66,7 +65,7 @@ void draw() {
             text(y + i + " ", 540, 45);
             xv = 0;
           }
-          if (right && get(x + 20 + k, y + i) == black) {
+          if (right && get(x + 21 + k, y + i) == black) {
             while (get(x + 21, y + i) != black) {
               x++;
             }
@@ -79,6 +78,7 @@ void draw() {
             v = 0;
             i = 21;
             j = Math.abs(v) + 1;
+            text("hi", 1000, 60);
             k = vx + 1;
           }
           //slopes
