@@ -1,20 +1,22 @@
-class Platform{
-  private int x;
-  private int y;
+class Platform extends Thing{
   private String[] design;
   private int[] c;
   
   Platform(int xcor, int ycor){
-    x = xcor;
-    y = ycor;
+    setX(xcor);
+    setY(ycor);
   }
   
   void display(){
     fill(0, 125, 255);
-    rect(x, y, 100, 20);
+    rect(getX(), getY(), 100, 20);
   }
   boolean scroll(String s){
     //do something here
     return false;
+  }
+  void move(){
+  }
+  void die(){
   }
 }

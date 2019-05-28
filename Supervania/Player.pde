@@ -1,6 +1,4 @@
 class Player extends Thing{
-  private int x;
-  private int y;
   private int health;
   private boolean[] weapons;
   private boolean fall;
@@ -11,18 +9,18 @@ class Player extends Thing{
   private PImage img;
   
   Player(PImage i){
-    x = width/2;
-    y = height-25;
+    setX(width/2);
+    setY(height-25);
     health = 100;
     fall = false;
     img = i;
   }
   
   void display(){
-    image(img, x, y, 20, 20);
+    image(img, getX(), getY(), 20, 20);
   }
   void move(){
-    if (y < height - 21) {
+    if (getY() < height - 21) {
       fall = true;
       for (int i = 0; i < 21; i++) {
         /*
@@ -37,26 +35,26 @@ class Player extends Thing{
         }
         */
         //edges
-        if (v < 0 && get(x + i, (int)(y - 1 + v)) < -100000) {
-          while (get(x + i, y - 1) > -100000) {
+        if (v < 0 && get(getX() + i, (int)(y - 1 + v)) < -100000) {
+          while (get(getX() + i, y - 1) > -100000) {
             y--;
           }
           v = 0;
         }
-        if (left && get(x - 1 - xv, y + i) < -100000) {
+        if (left && get(getX() - 1 - xv, y + i) < -100000) {
           xv = 0;
-          while (get(x - 1, y + i) > -100000) {
+          while (get(getX() - 1, y + i) > -100000) {
             x--;
           }
         }
-        if (right && get(x + 21 + xv, y + i) < -100000) {
+        if (right && get(getX() + 21 + xv, y + i) < -100000) {
           xv = 0;
-          while (get(x + 21, y + i) > -100000) {
+          while (get(getX() + 21, y + i) > -100000) {
             x++;
           }
         }
-        if (v >= 0 && get(x + i, (int)(y + 21 + v)) < -100000) {
-          while (get(x + i, y + 21) > -100000) {
+        if (v >= 0 && get(getX() + i, (int)(y + 21 + v)) < -100000) {
+          while (get(getX() + i, y + 21) > -100000) {
             y++;
           }
           v = 0;
@@ -83,6 +81,7 @@ class Player extends Thing{
     }
   }
   void die(){
+    
   }
   int getX(){
     return x;
