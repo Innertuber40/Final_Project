@@ -19,6 +19,9 @@ color leftSlope = color(2);
 color semisolid = color(3);
 void draw() {
   background(-1);
+  fill(-1);
+  stroke(0);
+  rect(x, y, 20, 20);
   fill(0, 125, 255);
   rect(499, 700, 100, 20);
   rect(699, 730, 100, 23);
@@ -27,30 +30,36 @@ void draw() {
   line(0, 750, 20, 750);
   stroke(3);
   line(1150, 750, 1200, 750);
-  stroke(1);
-  triangle(250, 780, 350, 780, 350, 730);
   stroke(0);
   rect(350, 730, 20, 50);
   rect(0, 775, 1500, 25);
   text((get(x, y + 21) == black) + " ", 40, 40);
   text(v, 50, 50);
   text(" " + fall, 60, 60);
+  text(y, 520, 20);
+  stroke(1);
+  fill(0, 125, 255);
+  triangle(250, 775, 350, 775, 350, 730);
   if (y < height - 21) {
     //slopes
     onRightSlope = false;
     fall = true;
+    text(x, 256, 311);
     for (int ix = 1; ix < 20; ix++) {
       for (int iy = 1; iy < 20; iy++) {
+        text(x + ix, 256, 321);
         if (get(x + ix, y + iy) == rightSlope) {
           onRightSlope = true;
           fall = false;
           v = 0;
+          xv = 0;
           while(get(x + 1, y + 20) != rightSlope) {
             x++;
           }
         }
       }
     }
+    if (!onRightSlope) {
     for (int i = 0; i < 21; i++) {
       if (get(x + i, y - 1) == black) {
              tunnel = true;
@@ -106,6 +115,7 @@ void draw() {
         }
       }
     }
+    }
     if (fall == true) {
       y = y + v;
       if (frameCount % 2 == 0) {
@@ -135,9 +145,6 @@ void draw() {
       xv = 5;
     }
   }
-  text(y, 520, 20);
-  fill(-1);
-  rect(x, y, 20, 20);
 }
 
 void keyPressed() {
@@ -152,6 +159,7 @@ void keyPressed() {
     left = true;
   }
   if (keyCode == RIGHT) {
+    rect(800, 50, 10, 10);
     right = true;
   }
 }
