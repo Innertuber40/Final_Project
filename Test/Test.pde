@@ -14,6 +14,9 @@ boolean fall = true;
 boolean onSlope = false;
 boolean tunnel = false;
 color black = color(0);
+color rightSlope = color(1);
+color leftSlope = color(2);
+color semisolid = color(3);
 void draw() {
   background(-1);
   fill(0, 125, 255);
@@ -22,6 +25,8 @@ void draw() {
   rect(899, 740, 101, 20);
   rect(1037, 750, 101, 30);
   line(0, 750, 20, 750);
+  stroke(3);
+  line(1150, 750, 1200, 750);
   stroke(1);
   triangle(250, 800, 350, 800, 350, 750);
   stroke(0);
@@ -48,8 +53,10 @@ void draw() {
         }*/
         //edges
           text(j + "", 678 + j*50, 80);
-          if (v >= 0 && get(x + i, y + 21 + j) == black) {
-            while (get(x + i, y + 21) != black) {
+          boolean edgeDetect = get(x + i, y + 21 + j) == black;
+          boolean semiDetect = get(x + i, y + 21 + j) == semisolid;
+          if (v >= 0 && (edgeDetect || semiDetect)) {
+            while (edgeDetect && get(x + i, y + 21) != black || semiDetect && get(x + i, y + 21) != semisolid) {
               y++;
             }
             v = 0;
