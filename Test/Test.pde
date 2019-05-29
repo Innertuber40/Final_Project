@@ -11,7 +11,7 @@ int v = 0;
 boolean left;
 boolean right;
 boolean fall = true;
-boolean onSlope = false;
+boolean onRightSlope = false;
 boolean tunnel = false;
 color black = color(0);
 color rightSlope = color(1);
@@ -28,14 +28,29 @@ void draw() {
   stroke(3);
   line(1150, 750, 1200, 750);
   stroke(1);
-  triangle(250, 800, 350, 800, 350, 750);
+  triangle(250, 780, 350, 780, 350, 730);
   stroke(0);
+  rect(350, 730, 20, 50);
   rect(0, 775, 1500, 25);
   text((get(x, y + 21) == black) + " ", 40, 40);
   text(v, 50, 50);
   text(" " + fall, 60, 60);
   if (y < height - 21) {
+    //slopes
+    onRightSlope = false;
     fall = true;
+    for (int ix = 1; ix < 20; ix++) {
+      for (int iy = 1; iy < 20; iy++) {
+        if (get(x + ix, y + iy) == rightSlope) {
+          onRightSlope = true;
+          fall = false;
+          v = 0;
+          while(get(x + 1, y + 20) != rightSlope) {
+            x++;
+          }
+        }
+      }
+    }
     for (int i = 0; i < 21; i++) {
       if (get(x + i, y - 1) == black) {
              tunnel = true;
@@ -88,7 +103,6 @@ void draw() {
             text("hi", 1000, 60);
             k = vx + 1;
           }
-          //slopes
         }
       }
     }
@@ -104,16 +118,16 @@ void draw() {
     fall = false;
   }
   if (left) {
-    if (onSlope) {
+    if (onRightSlope) {
       x -= 5;
-      y -= 2.5;
+      y += 2.5;
     } else {
       x -= xv;
       xv = 5;
     }
   }
   if (right) {
-    if (onSlope) {
+    if (onRightSlope) {
       x += 5;
       y -= 2.5;
     } else {
