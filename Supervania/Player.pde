@@ -9,7 +9,7 @@ class Player extends Thing{
   private float v;
   private int xv;
   private PImage img;
-  private boolean isShoot;
+  Bullet b;
   
   Player(PImage i){
     x = width/2;
@@ -92,10 +92,10 @@ class Player extends Thing{
   int getY(){
     return y;
   }
-  boolean shoot(){
-    //trace over mousex and mousey
-    return isShoot;
-  }
+  //boolean shoot(){
+  //  //trace over mousex and mousey
+    
+  //}
   boolean[] weapons(){
     return weapons;
   }
