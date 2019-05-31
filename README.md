@@ -17,3 +17,12 @@ May 23rd
 May 24th
   -moved the movement code from Test to Player
   -started working on other classes.
+
+May 28th
+  -finished all platforming besides slopes, including semi-solids and platoforms near the ground
+
+May 29th
+  -made significant progress on slopes
+
+May 30th
+  -finished design for character model
