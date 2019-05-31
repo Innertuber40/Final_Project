@@ -3,6 +3,7 @@
 Player p;
 //this is a player
 Platform[] pl;
+Bullet b;
 void setup(){
   size(800, 700);
   background(255);
@@ -18,6 +19,10 @@ void draw(){
   pl[1].display();
   p.display();
   p.move();
+  //b.display();
+  if(b.isAlive()){
+    b.move();
+  }
 }
 void keyPressed(){
   if (keyCode == UP && p.fall == false) {
@@ -39,4 +44,7 @@ void keyReleased() {
   if (keyCode == RIGHT) {
     p.right = false;
   }
+}
+void mouseClicked(){
+  //p.shoot(b);
 }
