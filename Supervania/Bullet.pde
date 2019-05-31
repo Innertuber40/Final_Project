@@ -5,14 +5,14 @@ class Bullet extends Thing{
   private String direction;
   private int speed;
   private boolean exists;
-  
+
   Bullet(int spd, int d, String di){
     direction = di;
     damage = d;
     speed = spd;
     exists = true;
   }
-  
+
   void display(){
     fill(0, 255, 255);
     ellipse(x, y, 5, 5);
@@ -57,11 +57,5 @@ class Bullet extends Thing{
   }
   int getY(){
     return y;
-  }
-  void setX(int x){
-    this.x = x;
-  }
-  void setY(int y){
-    this.y = y;
   }
 }

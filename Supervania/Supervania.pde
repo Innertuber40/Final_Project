@@ -12,7 +12,6 @@ void setup(){
   pl = new Platform[2];
   pl[0] = new Platform(300, 650);
   pl[1] = new Platform(500, 600);
-  //b = new Bullet();
 }
 void draw(){
   background(255);
@@ -21,7 +20,9 @@ void draw(){
   p.display();
   p.move();
   //b.display();
-  //if()
+  if(b.isAlive()){
+    b.move();
+  }
 }
 void keyPressed(){
   if (keyCode == UP && p.fall == false) {
@@ -45,5 +46,5 @@ void keyReleased() {
   }
 }
 void mouseClicked(){
-  //p.shoot();
+  //p.shoot(b);
 }
