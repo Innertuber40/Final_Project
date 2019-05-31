@@ -9,8 +9,8 @@ class Player extends Thing{
   private float v;
   private int xv;
   private PImage img;
-  private boolean isShoot;
-  
+  Bullet b;
+
   Player(PImage i){
     x = width/2;
     y = height-25;
@@ -18,7 +18,7 @@ class Player extends Thing{
     fall = false;
     img = i;
   }
-  
+
   void display(){
     image(img, x, getY(), 20, 20);
   }
@@ -84,7 +84,7 @@ class Player extends Thing{
     }
   }
   void die(){
-    
+
   }
   int getX(){
     return x;
@@ -92,10 +92,10 @@ class Player extends Thing{
   int getY(){
     return y;
   }
-  boolean shoot(){
-    //trace over mousex and mousey
-    return isShoot;
-  }
+  //boolean shoot(){
+  //  //trace over mousex and mousey
+
+  //}
   boolean[] weapons(){
     return weapons;
   }
