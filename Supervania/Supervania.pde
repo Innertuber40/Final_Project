@@ -3,7 +3,7 @@
 Player p;
 //this is a player
 Platform[] pl;
-//Bullet b;
+Bullet b;
 void setup(){
   size(800, 700);
   background(255);
@@ -12,7 +12,7 @@ void setup(){
   pl = new Platform[2];
   pl[0] = new Platform(300, 650);
   pl[1] = new Platform(500, 600);
-  //b = new Bullet(250, 250, 50);
+  //b = new Bullet();
 }
 void draw(){
   background(255);
@@ -21,6 +21,7 @@ void draw(){
   p.display();
   p.move();
   //b.display();
+  //if()
 }
 void keyPressed(){
   if (keyCode == UP && p.fall == false) {
@@ -44,5 +45,5 @@ void keyReleased() {
   }
 }
 void mouseClicked(){
-  p.shoot();
+  //p.shoot();
 }
