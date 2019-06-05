@@ -26,3 +26,6 @@ May 29th
 
 May 30th
   -finished design for character model
+
+June 4th
+  -finished every animation for the character
