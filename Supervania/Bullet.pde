@@ -2,15 +2,17 @@ class Bullet extends Thing{
   private int x;
   private int y;
   private int damage;
-  private String direction;
   private int speed;
   private boolean exists;
+  private int mousex;
+  private int mousey;
 
-  Bullet(int spd, int d, String di){
-    direction = di;
+  Bullet(int spd, int d, int mousex, int mousey){
     damage = d;
     speed = spd;
     exists = true;
+    this.mousex = mousex;
+    this.mousey = mousey;
   }
 
   void display(){
@@ -18,34 +20,11 @@ class Bullet extends Thing{
     ellipse(x, y, 5, 5);
   }
   void move(){
-    if(direction.equals("right")){
-      x += speed;
-    }
-    else if(direction.equals("up-right")){
-      x += speed*cos(PI/4);
-      y -= speed*sin(PI/4);
-    }
-    else if(direction.equals("up")){
-      y -= speed;
-    }
-    else if(direction.equals("up-left")){
-      x -= speed*cos(PI/4);
-      y -= speed*sin(PI/4);
-    }
-    else if(direction.equals("left")){
-      x -= speed;
-    }
-    else if(direction.equals("down-left")){
-      x -= speed*cos(PI/4);
-      y += speed*sin(PI/4);
-    }
-    else if(direction.equals("down")){
-      y += speed;
-    }
-    else if(direction.equals("down-right")){
-      x += speed*cos(PI/4);
-      y += speed*sin(PI/4);
-    }
+    int px = p.getX();
+    int py = p.getY();
+    int hypo = abs(sqrt(pow(mousex - px, 2)+pow(mousey - py, 2)));
+    x += spd * (mousex - px) / hypo; // magnitude times cosine
+    y += spd * (mousey - py) / hypo; // magnitude times sine
   }
   boolean isAlive(){
     return exists;

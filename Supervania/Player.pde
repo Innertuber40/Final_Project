@@ -89,9 +89,10 @@ class Player extends Thing{
   int getY(){
     return y;
   }
-  boolean shoot(){
+  void shoot(){
     //trace over mousex and mousey
-    
+
+    b = new Bullet();
   }
   boolean[] weapons(){
     return weapons;
