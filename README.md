@@ -1,6 +1,9 @@
 # Final_Project
 Processing Awesomeness
 
+Project Descriptions:
+This will be a platform-based game where the player is able to freely move from platforms to platforms.The player can use the arrow-keys to move and the mouse to shoot. 
+
 Developmental Log:
 May 13-14th: 
   -started working on proof of concept
